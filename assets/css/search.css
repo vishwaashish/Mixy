@@ -1,0 +1,69 @@
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border: none;
+}
+
+.form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+#searchpost1 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.overlay {
+height: 100%;
+width: 100%;
+display: none;
+position: fixed;
+z-index: 999;
+top: 0;
+left: 0;
+/* background-color: rgb(0,0,0); */
+background-color :rgba(248, 251, 254, 0.9);
+animation: overlay 1s;
+}
+
+@keyframes overlay {
+    from {margin-top: 600px;}
+    to {margin-top: 0px;}
+  }
+
+.overlay-content {
+position: relative;
+top: 46%;
+width: 50%;
+text-align: center;
+margin-top: 30px;
+margin: auto;
+}
+
+.overlay .closebtn {
+position: absolute;
+top: 20px;
+right: 45px;
+font-size: 60px;
+cursor: pointer;
+color: black;
+}
+
+
+.overlay .closebtn:hover {
+color: #ccc;
+}
+
+.input-group:not(.has-validation)>.dropdown-toggle:nth-last-child(n+3), .input-group:not(.has-validation)>:not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+border-top-right-radius: 0;
+border-bottom-right-radius: 0;
+border-radius: 50px;
+}
