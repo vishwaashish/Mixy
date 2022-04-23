@@ -1,3 +1,4 @@
+
 <?php
 //user_dashboard.php
 include("db.php");
@@ -47,26 +48,26 @@ if (empty($row1['profile_image'])) {
   <link rel="stylesheet" href="assets/css/search.css">
   </link>
 
-  <link rel="stylesheet" href="assets/css/mixstyle.css"></link>
+  <link rel="stylesheet" href="assets/css/mixstyle.css">
+  </link>
   <!-- bootstrap -->
 
   <style>
-
 
 
   </style>
 </head>
 
 <body>
-<?php
-  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
+  <?php
+  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $url = "https://";
     $image2 = "https://";
-  }
-  else{
+  } else {
     $url = "http://";
 
-    $image2 = "http://";}
+    $image2 = "http://";
+  }
   // Append the host(domain name, ip) to the URL.   
   $url .= $_SERVER['HTTP_HOST'];
   $image2 .= $_SERVER['HTTP_HOST'];
@@ -74,7 +75,7 @@ if (empty($row1['profile_image'])) {
   $url .= "/OnePage/OnePage/search_user.php?user=$user";
 
   // echo '<a href="' . $url . '">' . $url . '</a>';
-  $featuredimage = $image2."/".$image1;
+  $featuredimage = $image2 . "/" . $image1;
 
   ?>
 
@@ -102,8 +103,24 @@ if (empty($row1['profile_image'])) {
       <h2 class="text-dark pt-1">Mixy</h2>
     </a>
     <div class="d-flex">
-    <a class="nav-link text-dark" href="all_user.php" tabindex="-1" aria-disabled="true" style="font-size: 25px;"><strong>For you </strong></a>
-    <a class="nav-link text-dark hidelink" href="follower_info.php" tabindex="-1" aria-disabled="true" style="font-size: 25px;"><strong>Make Friend</strong></a>
+      <a class="nav-link text-dark" href="all_user.php" tabindex="-1" aria-disabled="true" style="font-size: 25px;"><strong>For you </strong></a>
+      <a class="nav-link text-dark hidelink" href="follower_info.php" tabindex="-1" aria-disabled="true" style="font-size: 25px;">
+        <strong>Make Friend</strong>
+      </a>
+      <?php
+      // $query = mysqli_query($connect, "SELECT * FROM `users` where username = '$user' ");
+      // $row1 = mysqli_fetch_array($query);
+
+      if ($row1['status'] == 'admin') {
+      ?>
+        <a class="nav-link text-dark" href="admin/index.php" tabindex="-1" aria-disabled="true" style="font-size: 25px;">
+          <strong>Admin</strong>
+        </a>
+      <?php
+      }
+      ?>
+
+
     </div>
     <div class="dropdown">
       <a onclick="myFunction()" class="dropbtn fa fa fa-cog mx-3 text-decoration-none text-dark" style="font-size: 25px;"></a>
@@ -147,7 +164,7 @@ if (empty($row1['profile_image'])) {
               <div class="row no-gutters">
                 <div class="col-md-5 m-auto text-center thumbnil">
                   <figure class="figure1">
-                  <img <?php echo $image; ?> class="align-self-center img-fluid  shadow-sm  bg-white" alt="...">
+                    <img <?php echo $image; ?> class="align-self-center img-fluid  shadow-sm  bg-white" alt="...">
                   </figure>
                 </div>
                 <div class="col-md-7">
@@ -157,7 +174,7 @@ if (empty($row1['profile_image'])) {
                     <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
                       <div class="d-flex flex-column"> <span class="follo ">Followers</span> <span class=" h4"><?php echo $row1["follower_number"]; ?></span> </div>
                       <div class="d-flex flex-column"> <span class="follo">Following</span> <span class=" h4"><?php echo $row1["following_number"]; ?></span> </div>
-                      <div class="d-flex flex-column"> <span class="follo">Post</span> <span class=" h4"><?php echo $count;?></span> </div>
+                      <div class="d-flex flex-column"> <span class="follo">Post</span> <span class=" h4"><?php echo $count; ?></span> </div>
                     </div>
                     <?php if ($user_id['user_id'] != $row1['user_id']) { ?>
                       <div class=" mt-2 d-flex flex-row align-items-center">
@@ -281,6 +298,7 @@ if (empty($row1['profile_image'])) {
                   <!-- tags end -->
                   <!-- insert -->
                   <div class="py-2"><input type="submit" name="insert" class="btn btn-info" id="insert" value="insert" style="display:none;"></div>
+                  <div id="fetch_result_success" class="text-success h4"></div>
 
                 </div>
 
@@ -324,6 +342,8 @@ if (empty($row1['profile_image'])) {
     <script src="assets/js/fetchurl.js"></script>
 
     <script src="assets/js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>

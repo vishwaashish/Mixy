@@ -45,38 +45,40 @@ if (empty($row1['profile_image'])) {
   <!-- bootstrap -->
 
   <style>
+    body {
+      background: url(assets/img/hero-bg1.jpg) top center;
+      width: 100%;
+      /* height: 100vh; */
+      position: relative;
+      background-size: cover;
+      position: relative;
 
-body {
-  background: url(assets/img/hero-bg1.jpg) top center;
-  width: 100%;
-  /* height: 100vh; */
-  position: relative;
-  background-size: cover;
-  position: relative;
+    }
 
-}a.text-dark:focus, a.text-dark:hover {
-    color: #6749b9!important;
-}
+    a.text-dark:focus,
+    a.text-dark:hover {
+      color: #6749b9 !important;
+    }
 
-/* @media screen and (min-width: 720px) { */
-  a .nav-link{
-    font-size:10px;
-  }
-/* } */
+    /* @media screen and (min-width: 720px) { */
+    a .nav-link {
+      font-size: 10px;
+    }
 
+    /* } */
   </style>
 </head>
 
 <body>
-<?php
-  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
+  <?php
+  if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
     $url = "https://";
     $image2 = "https://";
-  }
-  else{
+  } else {
     $url = "http://";
 
-    $image2 = "http://";}
+    $image2 = "http://";
+  }
   // Append the host(domain name, ip) to the URL.   
   $url .= $_SERVER['HTTP_HOST'];
   $image2 .= $_SERVER['HTTP_HOST'];
@@ -84,7 +86,7 @@ body {
   $url .= "/OnePage/OnePage/search_user.php?user=$user";
 
   // echo '<a href="' . $url . '">' . $url . '</a>';
-  $featuredimage = $image2."/".$image1;
+  $featuredimage = $image2 . "/" . $image1;
 
   ?>
 
@@ -109,12 +111,12 @@ body {
 
   <nav class="navbar navbar-light   px-md-5 py-md-4 shadow-sm " style="background-color: white;">
 
-   
-    <a class="nav text-decoration-none p-0" href="search_user.php?user=<?php echo $user;?>"><img src="assets/img/mixy.png" alt="..." width="50" class="">
+
+    <a class="nav text-decoration-none p-0" href="search_user.php?user=<?php echo $user; ?>"><img src="assets/img/mixy.png" alt="..." width="50" class="">
       <h2 class="text-dark pt-1">Mixy</h2>
     </a>
     <div class="d-flex">
-    <a class="nav-link text-dark" href="all_user.php" tabindex="-1" aria-disabled="true" style="font-size: 20px;"><b>For you </b></a>
+      <a class="nav-link text-dark" href="all_user.php" tabindex="-1" aria-disabled="true" style="font-size: 20px;"><b>For you </b></a>
     </div>
     <div class="dropdown">
       <a onclick="myFunction()" class="dropbtn fa fa fa-cog mx-3 text-decoration-none text-dark" style="font-size: 25px;"></a>
@@ -158,7 +160,7 @@ body {
               <div class="row no-gutters">
                 <div class="col-md-5 m-auto text-center thumbnil">
                   <figure class="figure1">
-                  <img <?php echo $image; ?> class="align-self-center img-fluid  shadow-sm  bg-white" alt="...">
+                    <img <?php echo $image; ?> class="align-self-center img-fluid  shadow-sm  bg-white" alt="...">
                   </figure>
                 </div>
                 <div class="col-md-7">
@@ -168,7 +170,7 @@ body {
                     <div class="p-2 mt-2 bg-primary d-flex justify-content-between rounded text-white stats">
                       <div class="d-flex flex-column"> <span class="follo ">Followers</span> <span class=" h4"><?php echo $row1["follower_number"]; ?></span> </div>
                       <div class="d-flex flex-column"> <span class="follo">Following</span> <span class=" h4"><?php echo $row1["following_number"]; ?></span> </div>
-                      <div class="d-flex flex-column"> <span class="follo">Post</span> <span class=" h4"><?php echo $count;?></span> </div>
+                      <div class="d-flex flex-column"> <span class="follo">Post</span> <span class=" h4"><?php echo $count; ?></span> </div>
                     </div>
                     <?php if ($row1['username'] != $_SESSION['username']) { ?>
                       <div class=" mt-2 d-flex flex-row align-items-center">
@@ -202,7 +204,7 @@ body {
 
 
           </div>
-         
+
         </div>
 
       </div>
@@ -210,20 +212,20 @@ body {
 
 
     <div id="" class="">
-            <div class="container">
-                <div class="row icon-boxes1" id="user_list">
+      <div class="container">
+        <div class="row icon-boxes1" id="user_list">
 
-                </div>
+        </div>
 
-            </div>
-        </div><!-- End Team Section -->
+      </div>
+    </div><!-- End Team Section -->
 
 
 
     <div id="preloader"></div>
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center "><i class="fas fa-arrow-up text-white"></i></a>
 
-   
+
 
     <!-- bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -247,40 +249,40 @@ body {
 </html>
 
 <script>
-    $(document).ready(function() {
-        fetch_user();
+  $(document).ready(function() {
+    fetch_user();
 
-        function fetch_user() {
-            var action = 'fetch_user';
-            $.ajax({
-                url: "server.php",
-                method: "POST",
-                data: {
-                    action: action
-                },
-                success: function(data) {
-                    $('#user_list').html(data);
-                }
-            });
+    function fetch_user() {
+      var action = 'fetch_user';
+      $.ajax({
+        url: "server.php",
+        method: "POST",
+        data: {
+          action: action
+        },
+        success: function(data) {
+          $('#user_list').html(data);
         }
-        // following baction
-        $(document).on('click', '.action_button', function() {
-            var sender_id = $(this).data('sender_id');
-            var action = $(this).data('action');
-            $.ajax({
-                url: "server.php",
-                method: "POST",
-                data: {
-                    sender_id: sender_id,
-                    action: action
-                },
-                success: function(data) {
-                    fetch_user();
-                    fetch_post();
-                }
-            })
-        });
-        // following baction end
-
+      });
+    }
+    // following baction
+    $(document).on('click', '.action_button', function() {
+      var sender_id = $(this).data('sender_id');
+      var action = $(this).data('action');
+      $.ajax({
+        url: "server.php",
+        method: "POST",
+        data: {
+          sender_id: sender_id,
+          action: action
+        },
+        success: function(data) {
+          fetch_user();
+          fetch_post();
+        }
+      })
     });
+    // following baction end
+
+  });
 </script>

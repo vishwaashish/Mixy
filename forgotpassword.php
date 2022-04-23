@@ -421,68 +421,15 @@
                 </div>
             </div>
 
-            <div class="form-detail ">
-                <div class="mb-5 mt-3 " style="text-align: center;">
-                    <div class="btn-group " role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-danger" id="register">Register</button>
-                        <button type="button" class="btn btn-primary" id="login">Login</button>
-                    </div>
+            <div class="form-detail text-center d-flex align-items-center justify-content-center">
+                <div>
+                    <img src="assets/image/fotgot.png" width="100" alt="">
+                    <h1 class="mt-3 h4">Forgot Password?</h1>
+                    <p>Contact admin to change password. </p>
+                    <p class=" text-left"><b>Email</b> - vishwakarmaneetesh1654@gmail.com</p>
+                    <a href="index.php" class="m-5" style="margin-top: 1rem;">Login</a>
                 </div>
-                <div class="alert " id="error" style="display:none;">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">X</a>
-                </div>
-                <div class="alert " id="error1" style="display:none;">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">X</a>
-                </div>
-                <form id="register_form" name="form1" method="post">
 
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="name" placeholder="FullName" name="name">
-                    </div>
-                    <div class="form-group">
-                        <input type="username" class="form-control" id="username" placeholder="username" name="username">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="email" placeholder="Email@email.com" name="email">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="phone" placeholder="Phone Number " name="phone">
-                    </div>
-
-                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-                    <div class="form-group  ">
-                        <div class="form-check d-flex ">
-                            <input class="" type="checkbox" id='check' class="" style="width: 8%; -webkit-appearance: checkbox;    margin-top: 5px;">
-                            <label class="" for="gridCheck">
-                                Show Password
-                            </label>
-                        </div>
-                    </div>
-
-
-
-
-                    <input type="password" class="form-control" id="confirm_password" placeholder="confirm_password" name="confirm_password">
-
-                    <div class="mb-3"></div>
-                    <input type="button" name="save" class="btn btn-primary text-white" value="Register" id="butsave">
-                </form>
-                <form id="login_form" name="form1" method="post" style="display:none;">
-
-                    <div class="form-group">
-                        <label for="pwd">Email:</label>
-                        <input type="email" class="form-control" id="email_log" placeholder="Email" name="username" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="password_log" placeholder="Password" name="password" required>
-                    </div>
-
-                    <input type="button" name="save" class="btn text-white btn-primary" value="Login" id="butlogin">
-                    <a href="forgotpassword.php" class="text-center w-100 py-5" style="margin-top: 1rem;">Forgot Password ?</a>
-
-                </form>
             </div>
         </div>
     </div>

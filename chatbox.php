@@ -452,7 +452,7 @@ if (empty($userids['profile_image'])) {
 
             <div class="">
                 <div class="">
-                    <h2 class=" text-center"><strong>Messager<strong< /h2>
+                    <h2 class=" text-center"><strong>Messager<strong</h2>
                 </div>
 
             </div>

@@ -14,11 +14,11 @@ if (isset($_POST["action"])) {
 		$user[] =  $userfetch['username'];
 	}
 	foreach ($user as $user) {
-		if(isset($_POST["catagories"])){
-		$query1 = "
+		if (isset($_POST["catagories"])) {
+			$query1 = "
 		SELECT * FROM urlfetcher WHERE post_status = '1' AND
 	";
-		}else{
+		} else {
 			$query1 = "
 		SELECT * FROM urlfetcher WHERE post_status = '1' ";
 		}
@@ -29,7 +29,7 @@ if (isset($_POST["action"])) {
 
 			foreach ($catagories_filter as $catagories_filte) {
 				$query2 .= "catagories LIKE concat('%','$catagories_filte','%')";
-				$query2 .=" OR ";
+				$query2 .= " OR ";
 			}
 			// 	$query1 .= 
 			// 	// "AND catagories IN('" . $catagories_filter . "')
@@ -38,7 +38,7 @@ if (isset($_POST["action"])) {
 	}
 
 	$query1 .= $query2 . ";";
-	$query1 = str_replace("OR ;"," ",$query1);
+	$query1 = str_replace("OR ;", " ", $query1);
 
 	// $query = implode(" UNION ", $query);
 	$statement = $connect1->prepare($query1);
@@ -47,7 +47,7 @@ if (isset($_POST["action"])) {
 	$total_row = $statement->rowCount();
 	$output = '';
 
-	$user_id1 = mysqli_fetch_assoc(mysqli_query($connect,"SELECT * FROM users where username='".$_SESSION['username']."'"));
+	$user_id1 = mysqli_fetch_assoc(mysqli_query($connect, "SELECT * FROM users where username='" . $_SESSION['username'] . "'"));
 
 
 
@@ -92,14 +92,13 @@ if (isset($_POST["action"])) {
 			}
 
 
-			$file_headers = @get_headers($row['imageurl'] );
-			if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+			$file_headers = @get_headers($row['imageurl']);
+			if (!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
 				$postimage = 'assets/img/hero-bg.jpg';
+			} else {
+				$postimage = $row['image'];
 			}
-			else {
-				$postimage = $row['image'] ;
-			}
-			
+
 
 			$output .= '
 			<div class="col-lg-4 col-md-6 d-flex align-items-stretch icon-box" data-aos="fade-up" data-aos-delay="100" >
@@ -109,12 +108,12 @@ if (isset($_POST["action"])) {
 					<img src="' . $postimage . '" class="card-img-top imageurl" style="height: 285px;">
 				</a>
 					<div class="social ">
-					<a  href="http://www.facebook.com/sharer.php?s=100&amp;p[title]='.$row['title'].'&amp;p[url]='.$row['url'].'"  href="javascript: void(0)" title="Share on Facebook" target="_blank" class="fab fa-facebook "  ></a>
-					<a href="https://www.pinterest.com/pin/create/button/?url='.$row['url'].'&description='.$row['title'].' " title="Share on Pinterest" target="_blank" class="fab fa-pinterest"></a>
-					<a href="http://twitter.com/share?text='.$row['title'].'&url='.$row['url'].'&hashtags='.$row['catagories'].'" target="_blank" title="Tweet" class="fab fa-twitter" ></a>
-					<a href="http://www.linkedin.com/shareArticle?mini=true&url='.$row['url'].'&title='.$row['title'].'&source='.$row['url'].'" target="_blank" title="Share on LinkedIn" class="fab fa-linkedin"></a>
-					<a href="https://wa.me/?text='.$row['url'].'" target="_blank" title="Share on Whatsapp" class="fab fa-whatsapp"></a>
-					<a href="mailto:?subject='.$row['title'].'&amp;body='.$row['url'].'" target="_blank" title="Share on Email" class="fa fa-envelope"></a>
+					<a  href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=' . $row['title'] . '&amp;p[url]=' . $row['url'] . '"  href="javascript: void(0)" title="Share on Facebook" target="_blank" class="fab fa-facebook "  ></a>
+					<a href="https://www.pinterest.com/pin/create/button/?url=' . $row['url'] . '&description=' . $row['title'] . ' " title="Share on Pinterest" target="_blank" class="fab fa-pinterest"></a>
+					<a href="http://twitter.com/share?text=' . $row['title'] . '&url=' . $row['url'] . '&hashtags=' . $row['catagories'] . '" target="_blank" title="Tweet" class="fab fa-twitter" ></a>
+					<a href="http://www.linkedin.com/shareArticle?mini=true&url=' . $row['url'] . '&title=' . $row['title'] . '&source=' . $row['url'] . '" target="_blank" title="Share on LinkedIn" class="fab fa-linkedin"></a>
+					<a href="https://wa.me/?text=' . $row['url'] . '" target="_blank" title="Share on Whatsapp" class="fab fa-whatsapp"></a>
+					<a href="mailto:?subject=' . $row['title'] . '&amp;body=' . $row['url'] . '" target="_blank" title="Share on Email" class="fa fa-envelope"></a>
 					</div>
 				</div>
 				<div class="member-info mt-0">

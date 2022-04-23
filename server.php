@@ -507,7 +507,7 @@ if (isset($_POST["action12"])) //user_dashbord
 				  </a>
 				  <h2 class="sub_title">...</h2>
 				  <p class="description" style="display: none; height: 100px; opacity: 1;">' . $description1 . '</p>
-				  <div class="post-meta"><span class="timestamp"><i class="fa fa-clock"></i> ' . date("h:i A| M-y ", strtotime($res['uploaded_on'])) . '</span>
+				  <div class="post-meta"><span class="timestamp"><i class="fa fa-clock"></i> ' . date("h:i A| d-M-y ", strtotime($res['uploaded_on'])) . '</span>
 				  <i ' . $post_class . '
 				  data-id="' . $res['content_id'] . '"></i><span class="likes px-2" style="display:inline-block; font-size:15px; font-weight:bold;">' . getLikes($res['content_id']) . '</span> 
 				  </div>
